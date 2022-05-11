@@ -1,12 +1,15 @@
-INSERT MANDATORY GIF
+<img src="https://media.giphy.com/media/26uf1VGKiJqZjItXi/giphy.gif">
 
-# Project Title
+# Playdate/Tetris
 
-Text about the project and which JavaScript library you're using. This would also be a great place to link the game on Netlify.
+This is a schoolproject. We've made tetris (yay!) in PixiJS.
 
 # Installation
 
-Add the installation instructions.
+1. Clone this repo.
+2. Run npm install.
+3. Use a liveserver to start the project.
+4. Open index.html in your favourite browser.
 
 # Changelog
 

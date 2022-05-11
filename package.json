@@ -1,3 +1,6 @@
 {
-  "private": true
+  "private": true,
+  "dependencies": {
+    "pixi.js": "^6.3.2"
+  }
 }
