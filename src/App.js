@@ -123,32 +123,31 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowLeft') {
     ShapePositionX -= 1;
   }
-  // if (e.key === 'ArrowDown') {
-  //   ShapePositionY -= 1;
-  // }
+  if (e.key === 'ArrowDown') {
+    ShapePositionY += 1;
+  }
 });
 
 // Vi behöver annars ha acess till DeltaMS på något sätt i ticker-klassen
-app.ticker.add((delta) => loop(delta));
-
+app.ticker.add((dt) => loop(dt));
+app.ticker.maxFPS = 1;
 let fpsCounter = 0;
-
-function loop(delta) {
+function loop(dt) {
   // annars kan vi göra en frame-counter, och varje gång den når
   // en viss frame så flyttas den += 1
   // Testade nyss och man ser hur performance blir dålig..
-  fpsCounter += 1;
+  // fpsCounter += 1;
 
   // console.log(fpsCounter);
   // add_shape_to_world(L);
 
-  if (fpsCounter === 20) {
-    fpsCounter = 0;
+  fpsCounter++;
+  if (fpsCounter % 10 == 0) {
     ShapePositionY += 1;
   }
-  console.time('add_shape_to_world');
+
+  console.log(dt);
   add_shape_to_world(L);
-  console.timeEnd('add_shape_to_world');
   draw_world(); // The world needs to be drawn in loop to see the update of shape's position
 }
 
