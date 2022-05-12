@@ -39,6 +39,8 @@ let World = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
+console.log(World);
+
 const colors = [
   '0xf8f5f1',
   '0xff8d87',
@@ -59,6 +61,7 @@ const L = [
   [0, 1, 1, 0],
   [0, 0, 0, 0],
 ];
+
 const I = [
   [0, 2, 0, 0],
   [0, 2, 0, 0],
@@ -104,12 +107,51 @@ function add_shape_to_world(shape) {
   }
 }
 
-console.log(World);
+// function move_shape_down()
+
+// move_shape_left
+
+// move_shape_right
+
+// Funderar på att inte köra med ticker, och börja med att kunna move med
+// med pilarna
+document.addEventListener('keydown', function (e) {
+  console.log(e);
+  if (e.key === 'ArrowRight') {
+    ShapePositionX += 1;
+  }
+  if (e.key === 'ArrowLeft') {
+    ShapePositionX -= 1;
+  }
+  // if (e.key === 'ArrowDown') {
+  //   ShapePositionY -= 1;
+  // }
+});
+
+// Vi behöver annars ha acess till DeltaMS på något sätt i ticker-klassen
 app.ticker.add((delta) => loop(delta));
 
-function loop(delta) {
-  add_shape_to_world(Z);
-  ShapePositionY += 1;
+let fpsCounter = 0;
 
-  draw_world();
+function loop(delta) {
+  // annars kan vi göra en frame-counter, och varje gång den når
+  // en viss frame så flyttas den += 1
+  // Testade nyss och man ser hur performance blir dålig..
+  fpsCounter += 1;
+
+  // console.log(fpsCounter);
+  // add_shape_to_world(L);
+
+  if (fpsCounter === 20) {
+    fpsCounter = 0;
+    ShapePositionY += 1;
+  }
+  console.time('add_shape_to_world');
+  add_shape_to_world(L);
+  console.timeEnd('add_shape_to_world');
+  draw_world(); // The world needs to be drawn in loop to see the update of shape's position
 }
+
+console.log(World);
+
+// Nästa steg efter detta är att få
