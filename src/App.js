@@ -9,18 +9,41 @@ const app = new Application({
 
 app.renderer.backgroundColor = 0x233950;
 app.renderer.resize(window.innerWidth, window.innerHeight);
-
 app.renderer.view.style.position = 'absolute';
-
 document.body.appendChild(app.view);
 
 const Graphics = PIXI.Graphics;
 
-const rectangle = new Graphics();
-rectangle
-  .beginFill(0xaa33bb)
-  .lineStyle(4, 0xffea00, 1)
-  .drawRect(200, 200, 100, 120)
-  .endFill();
+// ****** TICKER ******* //
 
-app.stage.addChild(rectangle);
+app.ticker.add((dt) => loop(dt));
+app.ticker.maxFPS = 1;
+
+let fpsCounter = 0;
+
+function loop(dt) {
+  // ** this part moves the shape downwards
+  // everytime fpsCounter is dividable by 10 ** //
+  fpsCounter++;
+  if (fpsCounter % 10 == 0) {
+    ShapePositionY += 1;
+  }
+  // ***************************************** //
+
+  add_shape_to_world(L);
+
+  // ** this part checks if the shapes position reaches
+  // the bottom of World, at which point it starts over at the top ** //
+  if (ShapePositionY + L.length == World.length) {
+    ShapePositionY = 0;
+  }
+  // ***************************************** //
+
+  draw_world(); // The world needs to be drawn in loop to see the update of shape's position
+
+  console.log(World);
+}
+
+console.log(World);
+
+// Nästa steg efter detta är att dölja/ta bort tracen.
