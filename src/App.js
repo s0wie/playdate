@@ -17,6 +17,7 @@ const Graphics = PIXI.Graphics;
 // ****** TICKER ******* //
 
 app.ticker.add((dt) => loop(dt));
+
 app.ticker.maxFPS = 1;
 
 let fpsCounter = 0;
@@ -26,15 +27,18 @@ function loop(dt) {
   // everytime fpsCounter is dividable by 10 ** //
   fpsCounter++;
   if (fpsCounter % 10 == 0) {
+    remove_shape_from_world(L);
+
     ShapePositionY += 1;
+    add_shape_to_world(L);
   }
   // ***************************************** //
 
-  add_shape_to_world(L);
+  //add_shape_to_world(L);
 
   // ** this part checks if the shapes position reaches
   // the bottom of World, at which point it starts over at the top ** //
-  if (ShapePositionY + L.length == World.length) {
+  if (ShapePositionY + L.length >= World.length) {
     ShapePositionY = 0;
   }
   // ***************************************** //
