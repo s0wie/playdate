@@ -58,3 +58,5 @@ const Z = [
 ];
 
 const shapes = [L, I, Z];
+
+const activeShape = shapes[randomInt()];

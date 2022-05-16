@@ -27,20 +27,23 @@ function loop(dt) {
   // everytime fpsCounter is dividable by 10 ** //
   fpsCounter++;
   if (fpsCounter % 10 == 0) {
-    remove_shape_from_world(L);
+    remove_shape_from_world(activeShape);
 
     ShapePositionY += 1;
-    add_shape_to_world(L);
+    add_shape_to_world(activeShape);
+    check_collision(activeShape);
   }
   // ***************************************** //
+
+  // collision
 
   //add_shape_to_world(L);
 
   // ** this part checks if the shapes position reaches
   // the bottom of World, at which point it starts over at the top ** //
-  if (ShapePositionY + L.length >= World.length) {
-    ShapePositionY = 0;
-  }
+  // if (ShapePositionY + L.length >= World.length) {
+  //   ShapePositionY = 0;
+  // }
   // ***************************************** //
 
   draw_world(); // The world needs to be drawn in loop to see the update of shape's position

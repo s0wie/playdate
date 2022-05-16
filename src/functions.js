@@ -16,11 +16,17 @@ function draw_world() {
   }
 }
 
+function next_shape() {
+  console.log('new shape');
+  ShapePositionX = 4;
+  ShapePositionY = 0;
+}
+
 function add_shape_to_world(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
       if (shape[y][x] != 0) {
-        if (ShapePositionY + y < 20) {
+        if (ShapePositionY + y < 19) {
           World[y + ShapePositionY][x + ShapePositionX] = shape[y][x];
         }
       }
@@ -32,10 +38,36 @@ function remove_shape_from_world(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
       if (shape[y][x] != 0) {
-        if (ShapePositionY + y < 20) {
+        if (ShapePositionY + y < 19) {
           World[y + ShapePositionY][x + ShapePositionX] = 0;
         }
       }
     }
   }
+}
+
+function check_collision(shape) {
+  for (let y = 0; y < shape.length; y++) {
+    for (let x = 0; x < shape[0].length; x++) {
+      if (shape[y][x] != 0) {
+        if (ShapePositionY + y > 19) {
+          // nu är vi i botten
+          next_shape(activeShape);
+        }
+        if (ShapePositionX + x < 0 || ShapePositionX + x > 10) {
+          return true;
+          // sidorna
+        }
+        if (World[ShapePositionY + 1 + y][ShapePositionX + x] != 0) {
+          next_shape(activeShape);
+          // collission med annat block under en
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function randomInt() {
+  return Math.floor(Math.random() * 3);
 }
