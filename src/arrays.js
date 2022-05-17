@@ -56,7 +56,38 @@ const Z = [
   [0, 0, 3, 0],
   [0, 0, 0, 0],
 ];
+const S = [
+  [0, 0, 4, 0],
+  [0, 4, 4, 0],
+  [0, 4, 0, 0],
+  [0, 0, 0, 0],
+];
 
-const shapes = [L, I, Z];
+const T = [
+  [0, 0, 0, 0],
+  [0, 0, 5, 0],
+  [0, 5, 5, 5],
+  [0, 0, 0, 0],
+];
 
-const activeShape = shapes[randomInt()];
+const J = [
+  [0, 0, 6, 0],
+  [0, 0, 6, 0],
+  [0, 6, 6, 0],
+  [0, 0, 0, 0],
+];
+
+const O = [
+  [0, 0, 0, 0],
+  [0, 7, 7, 0],
+  [0, 7, 7, 0],
+  [0, 0, 0, 0],
+];
+
+const shapes = [L, I, Z, S, T, J, O];
+
+function randomInt() {
+  return Math.floor(Math.random() * 7);
+}
+
+let activeShape = shapes[randomInt()];

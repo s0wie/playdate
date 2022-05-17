@@ -26,13 +26,13 @@ function loop(dt) {
   // ** this part moves the shape downwards
   // everytime fpsCounter is dividable by 10 ** //
   fpsCounter++;
-  if (fpsCounter % 10 == 0) {
-    remove_shape_from_world(activeShape);
+  // if (fpsCounter % 10 == 0) {
+  remove_shape_from_world(activeShape);
 
-    ShapePositionY += 1;
-    add_shape_to_world(activeShape);
-    check_collision(activeShape);
-  }
+  ShapePositionY += 1;
+  add_shape_to_world(activeShape);
+  check_collision(activeShape);
+  // }
   // ***************************************** //
 
   // collision
@@ -47,11 +47,7 @@ function loop(dt) {
   // ***************************************** //
 
   draw_world(); // The world needs to be drawn in loop to see the update of shape's position
-
-  console.log(World);
 }
-
-console.log(World);
 
 // Nästa steg efter detta är att dölja/ta bort tracen.
 // Vid varje iteration så målar ni över med en ny Värld som är tom
