@@ -54,3 +54,5 @@ function loop(dt) {
 console.log(World);
 
 // Nästa steg efter detta är att dölja/ta bort tracen.
+// Vid varje iteration så målar ni över med en ny Värld som är tom
+// Världen med add_shape ändras ju bara
