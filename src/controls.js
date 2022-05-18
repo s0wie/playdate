@@ -22,6 +22,9 @@ document.addEventListener('keydown', function (e) {
   }
 
   if (e.key === 'ArrowUp') {
-    rotate_shape(activeShape);
+    remove_shape_from_world(activeShape);
+    activeShape = activeShape[][i++];
+    // How do we add one to the second value [] without declaring the first one?
+    add_shape_to_world(activeShape);
   }
 });

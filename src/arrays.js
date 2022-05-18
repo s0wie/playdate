@@ -230,7 +230,10 @@ const O = [
   ],
 ];
 
-const shapes = [L[0], I[0], Z[0], S[0], T[0], J[0], O[0]];
+// const shapes = [L[0], I[0], Z[0], S[0], T[0], J[0], O[0]];
+
+let i = 0;
+const shapes = [L[i], I[i], Z[i], S[i], T[i], J[i], O[i]];
 
 function randomInt() {
   return Math.floor(Math.random() * 7);
