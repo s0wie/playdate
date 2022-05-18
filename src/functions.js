@@ -72,3 +72,7 @@ function check_collision(shape) {
 // function randomInt() {
 //   return Math.floor(Math.random() * 7);
 // }
+
+function rotate_shape(shape) {
+  shape[+1];
+}

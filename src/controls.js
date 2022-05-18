@@ -20,4 +20,8 @@ document.addEventListener('keydown', function (e) {
     ShapePositionY += 1;
     add_shape_to_world(activeShape);
   }
+
+  if (e.key === 'ArrowUp') {
+    rotate_shape(activeShape);
+  }
 });
