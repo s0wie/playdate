@@ -55,7 +55,7 @@ function check_collision(shape) {
           // nu är vi i botten
           next_shape(activeShape);
         }
-        if (ShapePositionX + x < 0 || ShapePositionX + x > 10) {
+        if (ShapePositionX + x < 1 || ShapePositionX + x > 8) {
           return true;
           // sidorna
         }
