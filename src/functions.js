@@ -75,7 +75,7 @@ function check_collision_right(shape) {
   return 0;
 }
 
-function check_bottom(shape) {
+function check_collision_bottom(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
       if (shape[y][x] != 0) {
@@ -92,7 +92,7 @@ function check_bottom(shape) {
 function check_collision(shape) {
   response = check_collision_left(shape);
   response = check_collision_right(shape);
-  response = check_bottom(shape);
+  response = check_collision_bottom(shape);
   return response;
 }
 
