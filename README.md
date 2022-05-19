@@ -13,7 +13,8 @@ This is a schoolproject. We've made tetris (yay!) in PixiJS.
 
 # Changelog
 
--   [#1 - Add a link to each pull request with a descriptive line.](#1)
+1.  -   <a href="https://github.com/s0wie/playdate/pull/1">First merge</a>
+2.  -   <a href="https://github.com/s0wie/playdate/pull/2">Second merge</a>
 
 # Code Review
 
