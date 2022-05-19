@@ -230,8 +230,8 @@ const O = [
   ],
 ];
 
-let i = 0;
-const shapes = [L[i], I[i], Z[i], S[i], T[i], J[i], O[i]];
+let rotation = 0;
+const shapes = [L, I, Z, S, T, J, O];
 
 function randomInt() {
   return Math.floor(Math.random() * 7);

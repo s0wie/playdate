@@ -47,26 +47,61 @@ function remove_shape_from_world(shape) {
   }
 }
 
-function check_collision(shape) {
+function check_collision_left(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
       if (shape[y][x] != 0) {
-        if (ShapePositionY + y > 18) {
-          // nu är vi i botten
-          next_shape(activeShape);
+        //bottom
+        if (ShapePositionX + x <= 0) {
+          return 2;
         }
-        if (ShapePositionX + x < 1 || ShapePositionX + x > 8) {
-          return true;
-          // sidorna
-        }
-        // if (World[ShapePositionY + 1 + y][ShapePositionX + x] != 0) {
-        //   // next_shape(activeShape);
-        //   // collission med annat block under en
-        // }
       }
     }
   }
-  return false;
+  return 0;
+}
+
+function check_collision_right(shape) {
+  for (let y = 0; y < shape.length; y++) {
+    for (let x = 0; x < shape[0].length; x++) {
+      if (shape[y][x] != 0) {
+        //bottom
+        if (ShapePositionX + x >= 9) {
+          return 3;
+        }
+      }
+    }
+  }
+  return 0;
+}
+
+function check_bottom(shape) {
+  for (let y = 0; y < shape.length; y++) {
+    for (let x = 0; x < shape[0].length; x++) {
+      if (shape[y][x] != 0) {
+        //bottom
+        if (ShapePositionY + y >= 19) {
+          next_shape();
+          return 1;
+        }
+      }
+    }
+  }
+  return 0;
+}
+function check_collision(shape) {
+  response = check_collision_left(shape);
+  response = check_collision_right(shape);
+  response = check_bottom(shape);
+  return response;
+}
+
+function move_down() {
+  if (check_collision(activeShape[rotation]) != 1) {
+    remove_shape_from_world(activeShape[rotation]);
+    ShapePositionY += 1;
+    add_shape_to_world(activeShape[rotation]);
+  }
 }
 
 // function randomInt() {

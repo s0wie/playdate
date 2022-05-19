@@ -27,11 +27,12 @@ function loop(dt) {
   // everytime fpsCounter is dividable by 10 ** //
   // fpsCounter++;
   // if (fpsCounter % 10 == 0) {
-  remove_shape_from_world(activeShape);
 
-  ShapePositionY += 1;
-  add_shape_to_world(activeShape);
-  check_collision(activeShape);
+  move_down();
+  //remove_shape_from_world(activeShape[rotation]);
+
+  //add_shape_to_world(activeShape[rotation]);
+  // check_collision(activeShape[rotation]);
   // }
   // ***************************************** //
 

@@ -1,30 +1,27 @@
 document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowRight') {
-    if (!check_collision(activeShape)) {
+    if (!(check_collision_right(activeShape[rotation]) == 3)) {
       console.log('hej');
-      remove_shape_from_world(activeShape);
+      remove_shape_from_world(activeShape[rotation]);
       ShapePositionX += 1;
-      add_shape_to_world(activeShape);
+      add_shape_to_world(activeShape[rotation]);
     }
   }
   if (e.key === 'ArrowLeft') {
-    if (!check_collision(activeShape)) {
-      remove_shape_from_world(activeShape);
+    if (!(check_collision_left(activeShape[rotation]) == 2)) {
+      remove_shape_from_world(activeShape[rotation]);
       ShapePositionX -= 1;
-      add_shape_to_world(activeShape);
+      add_shape_to_world(activeShape[rotation]);
     }
   }
   if (e.key === 'ArrowDown') {
-    check_collision(activeShape);
-    remove_shape_from_world(activeShape);
-    ShapePositionY += 1;
-    add_shape_to_world(activeShape);
+    move_down();
   }
 
   if (e.key === 'ArrowUp') {
-    remove_shape_from_world(activeShape);
-    activeShape = activeShape[i++];
-    // How do we add one to the second value [] without declaring the first one?
-    add_shape_to_world(activeShape);
+    remove_shape_from_world(activeShape[rotation]);
+    rotation = (rotation + 1) % 4;
+    // adds one to rotation, but will never be over 4. if rotation = 3 then (3+1)%4 = 0
+    add_shape_to_world(activeShape[rotation]);
   }
 });
