@@ -13,10 +13,10 @@ This is a schoolproject. We've made tetris (yay!) in PixiJS.
 
 # Changelog
 
-
 1.  -   <a href="https://github.com/s0wie/playdate/pull/1">Setup #1</a> - Setting up PixiJS
 2.  -   <a href="https://github.com/s0wie/playdate/pull/2">Playground #2</a> - Added a playground with shape looping from top to bottom, that is able to move left, right and down.
 3.  -   <a href="https://github.com/s0wie/playdate/pull/3">Fix figures #3</a> - Fixed bugs to shapes movement
+
 
 # Code Review
 

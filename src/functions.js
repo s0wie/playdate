@@ -16,6 +16,13 @@ function draw_world() {
   }
 }
 
+function next_shape() {
+  console.log('new shape');
+  activeShape = shapes[randomInt()];
+  ShapePositionX = 4;
+  ShapePositionY = 0;
+}
+
 function add_shape_to_world(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
@@ -39,6 +46,7 @@ function remove_shape_from_world(shape) {
     }
   }
 }
+
 
 // Originally checked left, right and bottom in one function
 // which caused issues in bottom corners where
@@ -74,6 +82,7 @@ function check_collision_right(shape) {
 
 // Collision checked each individual rect within shape
 // which causes issues
+
 function check_collision_bottom(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
