@@ -23,8 +23,13 @@ function next_shape() {
   ShapePositionY = 0;
   rotation = 0;
   if (check_collision_bottom(activeShape[rotation]) == 1) {
-    console.log('end_game()');
+    console.log('GAME OVER SUCKER!');
+    end_game();
   }
+}
+
+function end_game() {
+  app.ticker.stop();
 }
 
 function add_shape_to_world(shape) {
@@ -127,6 +132,17 @@ function move_down() {
   }
 }
 
-// function randomInt() {
-//   return Math.floor(Math.random() * 7);
-// }
+function check_row_full() {
+  for (let y = 0; y < World.length; y++) {
+    if (
+      !World[y].includes(0) &&
+      check_collision_bottom(activeShape[rotation]) == 1
+    ) {
+      console.log('Nu är det fullt');
+
+      World.splice(y, 1);
+      World.splice(1, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+      score += 100;
+    }
+  }
+}

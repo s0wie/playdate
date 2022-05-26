@@ -16,6 +16,8 @@ document.body.appendChild(app.view);
 
 const Graphics = PIXI.Graphics;
 
+let score = 0;
+
 // ****** TICKER ******* //
 
 app.ticker.add((dt) => loop(dt));
@@ -48,17 +50,14 @@ function loop(dt) {
   //   ShapePositionY = 0;
   // }
   // ***************************************** //
-
+  check_row_full();
+  console.log(score);
   draw_world(); // The world needs to be drawn in loop to see the update of shape's position
 }
 
 // Nästa gång:
-// - ROTERA shape
-// - lägga sig på varandra
-// - sidorna
-// - en rad ska tas bort
-// - räkna poäng
+// - sidorna/rotera, bugg
+// - gameover-linje
 // - game och gameover
-// - spara poäng?
 // - inte lagga så småningom
-// - Multiplayer
+// - Multiplayer, HAHA JOKES
