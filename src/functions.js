@@ -5,7 +5,18 @@ function draw_box_at(x, y) {
     .lineStyle(2, 0xd9d3d0, 1)
     .drawRect(x * 30, y * 30, 30, 30)
     .endFill();
-  app.stage.addChild(rectangle);
+
+  const rectangleLine = new Graphics();
+  rectangleLine
+    .beginFill(0xffffff)
+    .drawRect(x * 30, y * 30, 30, 30)
+    .endFill();
+
+  if (y < 3) {
+    app.stage.addChild(rectangleLine);
+  } else {
+    app.stage.addChild(rectangle);
+  }
 }
 
 function draw_world() {
