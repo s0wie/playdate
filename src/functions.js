@@ -117,17 +117,6 @@ function check_collision_bottom(shape) {
   return 0;
 }
 
-function check_gameover(shape) {
-  for (let y = 0; y < shape.length; y++) {
-    for (let x = 0; x < shape[0].length; x++) {
-      if (World[3][4] != 0) {
-        console.log('GameOver!');
-        check_collision_bottom();
-      }
-    }
-  }
-}
-
 function move_down() {
   if (check_collision_bottom(activeShape[rotation]) != 1) {
     remove_shape_from_world(activeShape[rotation]);
