@@ -10,6 +10,8 @@ const app = new Application({
 app.renderer.backgroundColor = 0x233950;
 app.renderer.resize(window.innerWidth, window.innerHeight);
 app.renderer.view.style.position = 'absolute';
+// app.renderer.view.style.left = '50px';
+// app.renderer.view.style.top = '50px';
 document.body.appendChild(app.view);
 
 const Graphics = PIXI.Graphics;
@@ -26,8 +28,14 @@ function loop(dt) {
   // everytime fpsCounter is dividable by 10 ** //
   fpsCounter++;
   if (fpsCounter % 10 == 0) {
-    ShapePositionY += 1;
+    move_down();
   }
+
+  //remove_shape_from_world(activeShape[rotation]);
+
+  //add_shape_to_world(activeShape[rotation]);
+  // check_collision(activeShape[rotation]);
+  // }
   // ***************************************** //
 
   add_shape_to_world(L);
