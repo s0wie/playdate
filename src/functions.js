@@ -154,6 +154,18 @@ function check_row_full() {
       World.splice(y, 1);
       World.splice(1, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
       score += 100;
+      update_high_score(score);
     }
   }
+}
+
+function update_high_score(score) {
+  const HighScore = new Text(`High score: ${score}`, {
+    fontFamily: 'Arial',
+    fontSize: 24,
+    fill: 0xff1010,
+    align: 'center',
+  });
+
+  app.stage.addChild(HighScore);
 }
