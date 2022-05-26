@@ -19,8 +19,12 @@ function draw_world() {
 function next_shape() {
   console.log('new shape');
   activeShape = shapes[randomInt()];
-  ShapePositionX = 4;
+  ShapePositionX = 3;
   ShapePositionY = 0;
+  rotation = 0;
+  if (check_collision_bottom(activeShape[rotation]) == 1) {
+    console.log('end_game()');
+  }
 }
 
 function add_shape_to_world(shape) {
@@ -46,7 +50,6 @@ function remove_shape_from_world(shape) {
     }
   }
 }
-
 
 // Originally checked left, right and bottom in one function
 // which caused issues in bottom corners where
@@ -89,9 +92,10 @@ function check_collision_bottom(shape) {
       if (shape[y][x] != 0) {
         //bottom
         if (ShapePositionY + y >= 19) {
-          next_shape();
+          // next_shape();
           return 1;
         }
+
         // else if statement is specifically for case if shape[I]
         // since y + 1 is "out of bounds" for last element in I-shape, we put this in if (y!=3)
         if (y != 3) {
@@ -99,12 +103,12 @@ function check_collision_bottom(shape) {
             shape[y + 1][x] == 0 && // we check if it's 0 below in the shape, so it doesn't collide with itself
             World[ShapePositionY + y + 1][ShapePositionX + x] != 0 // then we check that the rect below the shape in the world is taken
           ) {
-            next_shape();
+            // next_shape();
             return 1;
           }
         } else if (World[ShapePositionY + y + 1][ShapePositionX + x] != 0) {
           // don't check collision with itself since it's the last row
-          next_shape();
+          // next_shape();
           return 1;
         }
       }
@@ -113,18 +117,24 @@ function check_collision_bottom(shape) {
   return 0;
 }
 
-function check_collision(shape) {
-  response = check_collision_left(shape);
-  response = check_collision_right(shape);
-  response = check_collision_bottom(shape);
-  return response;
+function check_gameover(shape) {
+  for (let y = 0; y < shape.length; y++) {
+    for (let x = 0; x < shape[0].length; x++) {
+      if (World[3][4] != 0) {
+        console.log('GameOver!');
+        check_collision_bottom();
+      }
+    }
+  }
 }
 
 function move_down() {
-  if (check_collision(activeShape[rotation]) != 1) {
+  if (check_collision_bottom(activeShape[rotation]) != 1) {
     remove_shape_from_world(activeShape[rotation]);
     ShapePositionY += 1;
     add_shape_to_world(activeShape[rotation]);
+  } else {
+    next_shape();
   }
 }
 

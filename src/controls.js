@@ -1,7 +1,6 @@
 document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowRight') {
     if (!(check_collision_right(activeShape[rotation]) == 3)) {
-      console.log('hej');
       remove_shape_from_world(activeShape[rotation]);
       ShapePositionX += 1;
       add_shape_to_world(activeShape[rotation]);

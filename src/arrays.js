@@ -34,7 +34,7 @@ const colors = [
   '0xffcd9c',
 ];
 
-let ShapePositionX = 4;
+let ShapePositionX = 3;
 let ShapePositionY = 0;
 
 const L = [
