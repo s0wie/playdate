@@ -27,17 +27,17 @@ const Text = PIXI.Text;
 
 app.ticker.add((dt) => loop(dt));
 
-app.ticker.maxFPS = 10;
+app.ticker.maxFPS = 1;
 
 let fpsCounter = 0;
 let score = 0;
 function loop(dt) {
   // ** this part moves the shape downwards
   // everytime fpsCounter is dividable by 10 ** //
-  // fpsCounter++;
-  // if (fpsCounter % 10 == 0) {
-  move_down();
-  // }
+  fpsCounter++;
+  if (fpsCounter % 5 == 0) {
+    move_down();
+  }
   check_row_full();
   console.log(score);
   draw_world(); // The world needs to be drawn in loop to see the update of shape's position
@@ -49,4 +49,5 @@ function loop(dt) {
 // - styling
 // - sidorna/rotera, bugg
 // - inte lagga så småningom
+// - lägga till musik och ljudeffekter?
 // - Multiplayer, HAHA JOKES
