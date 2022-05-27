@@ -7,6 +7,8 @@ const app = new Application({
   antialias: true,
 });
 
+PIXI.sound.add('sound', '/src/assets/tetris.mp3');
+
 app.renderer.backgroundColor = 0x233950;
 app.renderer.resize(window.innerWidth, window.innerHeight);
 app.renderer.view.style.position = 'absolute';
@@ -82,21 +84,6 @@ function loop(dt) {
     gameOverScreen.addChild(styledScoreText);
     styledScoreText.x = 0;
     styledScoreText.y = 190;
-
-    // const rerun = new PIXI.Graphics();
-    // rerun
-    //   .beginFill(0xd9d3d0)
-    //   .lineStyle(2, 0xd9d3d0, 1)
-    //   .drawRect(x * 30, y * 30, 30, 30)
-    //   .endFill();
-    // gameOverScreen.addChild(rerun);
-    // rerun.width = 400;
-    // rerun.height = 100;
-    // rerun.x = 140;
-    // rerun.y = 230;
-    // rerun.buttonMode = true;
-    // rerun.interactive = true;
-    // rerun.on('click', onClick);
   }
 }
 
@@ -105,5 +92,4 @@ function loop(dt) {
 // - styling
 // - sidorna/rotera, bugg
 // - inte lagga så småningom
-// - lägga till musik och ljudeffekter?
 // - Multiplayer, HAHA JOKES
