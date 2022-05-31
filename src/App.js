@@ -41,21 +41,6 @@ function loop(dt) {
     startScreen.visible = true;
     app.stage.addChild(startScreen);
 
-    // let startScreenBackground = new PIXI.Graphics();
-    // startScreenBackground.beginFill(0xfaffb0);
-    // startScreenBackground.drawRect(0, 0, 300, 600);
-    // startScreen.addChild(startScreenBackground);
-
-    const image = new PIXI.Sprite.from('/src/assets/start_game1.png');
-    image.width = 200;
-    image.height = 100;
-    image.x = 0;
-    image.y = 200;
-    image.buttonMode = true;
-    image.interactive = true;
-    image.on('click', onClick);
-    startScreen.addChild(image);
-
     const style = new PIXI.TextStyle({
       fontFamily: 'Futura',
       fill: ['#ff8d87'],
@@ -64,6 +49,9 @@ function loop(dt) {
 
     const text = 'Press here to start game';
     const styledText = new PIXI.Text(text, style);
+    styledText.buttonMode = true;
+    styledText.interactive = true;
+    styledText.on('click', onClick);
     startScreen.addChild(styledText);
     styledText.x = 0;
     styledText.y = 200;
@@ -75,8 +63,8 @@ function loop(dt) {
   if (gameOver == 0) {
     if (fpsCounter % 5 == 0) {
       move_down();
-      console.log(score);
-      draw_world(); // The world needs to be drawn in loop to see the update of shape's position
+      // console.log(score);
+      // draw_world(); // The world needs to be drawn in loop to see the update of shape's position
     }
   }
 

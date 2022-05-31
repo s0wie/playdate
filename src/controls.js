@@ -29,6 +29,7 @@ document.addEventListener('keydown', function (e) {
     rotation = (rotation + 1) % 4;
     // adds one to rotation, but will never be over 4. if rotation = 3 then (3+1)%4 = 0
     add_shape_to_world(activeShape[rotation]);
+    draw_world();
   }
   // }
 });

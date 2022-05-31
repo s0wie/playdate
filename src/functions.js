@@ -6,13 +6,15 @@ function draw_box_at(x, y) {
     .drawRect(x * 30, y * 30, 30, 30)
     .endFill();
 
-  // const rectangleLine = new Graphics();
-  // rectangleLine
-  //   .beginFill(0xffffff)
-  //   .drawRect(x * 30, y * 30, 30, 30)
-  //   .endFill();
+  const rectangleLine = new Graphics();
+  rectangleLine
+    .beginFill(0xffffff)
+    .drawRect(x * 30, y * 30, 30, 30)
+    .endFill();
 
-  if (y > 3) {
+  if (y < 3) {
+    app.stage.addChild(rectangleLine);
+  } else {
     app.stage.addChild(rectangle);
   }
 }
@@ -23,6 +25,7 @@ function draw_world() {
       draw_box_at(x, y);
     }
   }
+  update_high_score(score);
 }
 
 function next_shape() {
@@ -165,6 +168,7 @@ function move_down() {
     ShapePositionY += 1;
     add_shape_to_world(activeShape[rotation]);
     check_row_full();
+    draw_world();
   } else {
     next_shape();
   }
@@ -190,7 +194,6 @@ function update_high_score(score) {
     fontSize: 24,
     fill: 0x6d6875,
     align: 'center',
-    backgroundColor: 0x000000,
   });
   app.stage.addChild(HighScore);
 }
