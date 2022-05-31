@@ -230,3 +230,75 @@ function onClick() {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   );
 }
+
+function show_start_screen() {
+  const startScreen = new PIXI.Container();
+  startScreen.visible = true;
+  app.stage.addChild(startScreen);
+
+  const style = new PIXI.TextStyle({
+    fontFamily: 'Futura',
+    fill: ['#ff8d87'],
+    fontSize: 25,
+  });
+
+  const text = 'Press here to start game';
+  const styledText = new PIXI.Text(text, style);
+  styledText.buttonMode = true;
+  styledText.interactive = true;
+  styledText.on('click', onClick);
+  startScreen.addChild(styledText);
+  styledText.x = 0;
+  styledText.y = 200;
+}
+
+function show_game_over_screen() {
+  const gameOverScreen = new PIXI.Container();
+  gameOverScreen.visible = true;
+  app.stage.addChild(gameOverScreen);
+
+  let gameOverBackground = new PIXI.Graphics();
+  gameOverBackground.beginFill(0xffffff);
+  gameOverBackground.drawRect(-1, 0, 320, 610);
+  gameOverScreen.addChild(gameOverBackground);
+
+  let example = new PIXI.Graphics();
+  example.beginFill(0xb5838d);
+  example.drawRect(0, 0, 170, 60);
+  example.buttonMode = true;
+  example.interactive = true;
+  example.on('click', onClick);
+  example.x = 30;
+  example.y = 240;
+  gameOverScreen.addChild(example);
+
+  const style = new PIXI.TextStyle({
+    fontFamily: 'Futura',
+    fill: ['#6d6875'],
+    fontSize: 25,
+  });
+
+  const whiteStyle = new PIXI.TextStyle({
+    fontFamily: 'Futura',
+    fill: ['#ffffff'],
+    fontSize: 25,
+  });
+
+  const playagainText = `Start again!`;
+  const styledPlayagainText = new PIXI.Text(playagainText, whiteStyle);
+  gameOverScreen.addChild(styledPlayagainText);
+  styledPlayagainText.x = 48;
+  styledPlayagainText.y = 250;
+
+  const text = 'GAME OVER';
+  const styledText = new PIXI.Text(text, style);
+  gameOverScreen.addChild(styledText);
+  styledText.x = 35;
+  styledText.y = 100;
+
+  const scoreText = `You scored ${score} points!`;
+  const styledScoreText = new PIXI.Text(scoreText, style);
+  gameOverScreen.addChild(styledScoreText);
+  styledScoreText.x = 0;
+  styledScoreText.y = 150;
+}
