@@ -34,7 +34,6 @@ function next_shape() {
   ShapePositionY = 0;
   rotation = 0;
   if (check_collision_bottom(activeShape[rotation]) == 1) {
-    console.log('GAME OVER SUCKER!');
     gameOver = 1;
     end_game();
   }
@@ -151,8 +150,6 @@ function check_row_full() {
       !World[y].includes(0) &&
       check_collision_bottom(activeShape[rotation]) == 1
     ) {
-      console.log('Nu är det fullt');
-
       World.splice(y, 1);
       World.splice(1, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
       score += 100;
@@ -162,10 +159,10 @@ function check_row_full() {
 }
 
 function update_high_score(score) {
-  const HighScore = new Text(`High score: ${score}`, {
+  const HighScore = new Text(`Score: ${score}`, {
     fontFamily: 'Arial',
     fontSize: 24,
-    fill: 0xff1010,
+    fill: 0x6d6875,
     align: 'center',
   });
 
