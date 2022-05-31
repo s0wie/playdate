@@ -134,8 +134,6 @@ function loop(dt) {
 }
 
 // Nästa gång:
-// - game
-// - styling
 // - sidorna/rotera, bugg
 // - inte lagga så småningom
 // - Multiplayer, HAHA JOKES
