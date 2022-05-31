@@ -6,15 +6,13 @@ function draw_box_at(x, y) {
     .drawRect(x * 30, y * 30, 30, 30)
     .endFill();
 
-  const rectangleLine = new Graphics();
-  rectangleLine
-    .beginFill(0xffffff)
-    .drawRect(x * 30, y * 30, 30, 30)
-    .endFill();
+  // const rectangleLine = new Graphics();
+  // rectangleLine
+  //   .beginFill(0xffffff)
+  //   .drawRect(x * 30, y * 30, 30, 30)
+  //   .endFill();
 
-  if (y < 3) {
-    app.stage.addChild(rectangleLine);
-  } else {
+  if (y > 3) {
     app.stage.addChild(rectangle);
   }
 }
@@ -166,6 +164,7 @@ function move_down() {
     remove_shape_from_world(activeShape[rotation]);
     ShapePositionY += 1;
     add_shape_to_world(activeShape[rotation]);
+    check_row_full();
   } else {
     next_shape();
   }
@@ -186,13 +185,13 @@ function check_row_full() {
 }
 
 function update_high_score(score) {
-  const HighScore = new Text(`Score: ${score}`, {
+  const HighScore = new PIXI.Text(`Score: ${score}`, {
     fontFamily: 'Arial',
     fontSize: 24,
     fill: 0x6d6875,
     align: 'center',
+    backgroundColor: 0x000000,
   });
-
   app.stage.addChild(HighScore);
 }
 

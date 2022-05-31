@@ -4,6 +4,7 @@ document.addEventListener('keydown', function (e) {
       remove_shape_from_world(activeShape[rotation]);
       ShapePositionX += 1;
       add_shape_to_world(activeShape[rotation]);
+      draw_world();
     }
   }
   if (e.key === 'ArrowLeft') {
@@ -11,10 +12,12 @@ document.addEventListener('keydown', function (e) {
       remove_shape_from_world(activeShape[rotation]);
       ShapePositionX -= 1;
       add_shape_to_world(activeShape[rotation]);
+      draw_world();
     }
   }
   if (e.key === 'ArrowDown') {
     move_down();
+    draw_world();
   }
 
   if (e.key === 'ArrowUp') {

@@ -71,16 +71,15 @@ function loop(dt) {
 
   // ** this part moves the shape downwards
   // everytime fpsCounter is dividable by 10 ** //
-  // fpsCounter++;
-  // if (fpsCounter % 5 == 0) {
+  fpsCounter++;
   if (gameOver == 0) {
-    move_down();
-    // }
-    check_row_full();
-    console.log(score);
-    draw_world(); // The world needs to be drawn in loop to see the update of shape's position
-    update_high_score(score);
+    if (fpsCounter % 5 == 0) {
+      move_down();
+      console.log(score);
+      draw_world(); // The world needs to be drawn in loop to see the update of shape's position
+    }
   }
+
   if (gameOver == 1) {
     const gameOverScreen = new PIXI.Container();
     gameOverScreen.visible = true;
