@@ -233,8 +233,8 @@ const O = [
 let rotation = 0;
 const shapes = [L, I, Z, S, T, J, O];
 
-function randomInt() {
+function random_int() {
   return Math.floor(Math.random() * 7);
 }
 
-let activeShape = shapes[randomInt()];
+let activeShape = shapes[random_int()];
