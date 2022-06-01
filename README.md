@@ -22,7 +22,16 @@ This is a schoolproject. We've made tetris (yay!) in PixiJS.
 
 # Code Review
 
-1. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
+1. `general` - Don't forget to remove commented code that is not in use.
+2. `src/assets` - Nice work with the audio, make sure to remove assets that are not in use.
+3. `ingame bug` - When the down moving L-shaped objects is rotated close to the right or left wall, parts of the objects goes outside the game area. The objects also gets stuck even if it hasn't hit the bottom if you rotate them close to the edges.
+4. `ingame bug` - The objects seem to change shape sometimes when they hit the bottom.
+5. `license file` - Don't forget to add LICENSE to your beautiful game.
+6. `functions.js:172-203` - Great job naming all your functions, might want to change onClick() to something like runGame() just to make it a little bit more clear.
+7. `array.js:24` - Might want to remove your console.log during production.
+8. `ingame` - The game seems to run slower after a while, might be of the lag? Any idea what causes this?
+9. `App.js:49-57` - If this code snippet doesn't seem to work, maybe you could remove it?
+10. `general` - Overall very clean and understandable code, great job in splitting it up the code to different files.
 
 # Testers
 
