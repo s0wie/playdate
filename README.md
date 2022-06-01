@@ -1,4 +1,4 @@
-<img src="https://media.giphy.com/media/26uf1VGKiJqZjItXi/giphy.gif">
+<img src="https://media.giphy.com/media/f7STAwvEml1eIf0FEq/giphy.gif">
 
 # Playdate/Tetris
 

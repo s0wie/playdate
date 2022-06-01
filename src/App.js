@@ -1,3 +1,4 @@
+// Setting up the application.
 const Application = PIXI.Application;
 const Graphics = PIXI.Graphics;
 const Text = PIXI.Text;
@@ -8,6 +9,7 @@ const app = new Application({
   antialias: true,
 });
 
+// Adding the sound
 PIXI.sound.add('sound', '/src/assets/tetris.mp3');
 
 app.renderer.backgroundColor = 0x233950;
@@ -35,10 +37,9 @@ function loop(dt) {
     show_start_screen();
   }
 
-  // ** this part moves the shape downwards
-  // everytime fpsCounter is dividable by 5 ** //
+  // If you want the game to go slower, uncomment the text below.
   // fpsCounter++;
-  // console.log(fpsCounter);
+
   if (gameOver == 0) {
     // if (fpsCounter % 5 == 0) {
     move_down();
@@ -50,7 +51,3 @@ function loop(dt) {
     show_game_over_screen();
   }
 }
-
-// Nästa gång:
-// - inte lagga så småningom
-// - Multiplayer, HAHA JOKES

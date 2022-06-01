@@ -1,3 +1,4 @@
+// Deciding how the world should look.
 function draw_box_at(x, y) {
   const rectangle = new Graphics();
   rectangle
@@ -19,6 +20,7 @@ function draw_box_at(x, y) {
   }
 }
 
+// Drawing the playground (called world).
 function draw_world() {
   for (let y = 0; y < World.length; y++) {
     for (let x = 0; x < World[0].length; x++) {
@@ -28,9 +30,10 @@ function draw_world() {
   update_high_score(score);
 }
 
+// Gives us a new shape when another collides.
 function next_shape() {
   console.log('new shape');
-  activeShape = shapes[randomInt()];
+  activeShape = shapes[random_int()];
   ShapePositionX = 3;
   ShapePositionY = 0;
   rotation = 0;
@@ -45,6 +48,7 @@ function end_game() {
   app.ticker.stop();
 }
 
+// Draw a shape to the world. (Changes value in the world array from 0 to a number.)
 function add_shape_to_world(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
@@ -57,6 +61,7 @@ function add_shape_to_world(shape) {
   }
 }
 
+// Changes in the array from a number to zero so the shape disappears after it falls down.
 function remove_shape_from_world(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
@@ -75,10 +80,8 @@ function check_collision_bottom(shape) {
       if (shape[y][x] != 0) {
         //bottom
         if (ShapePositionY + y >= 19) {
-          // next_shape();
           return 1;
         }
-
         // else if statement is specifically for case if shape[I]
         // since y + 1 is "out of bounds" for last element in I-shape, we put this in if (y!=3)
         if (y != 3) {
@@ -86,12 +89,10 @@ function check_collision_bottom(shape) {
             shape[y + 1][x] == 0 && // we check if it's 0 below in the shape, so it doesn't collide with itself
             World[ShapePositionY + y + 1][ShapePositionX + x] != 0 // then we check that the rect below the shape in the world is taken
           ) {
-            // next_shape();
             return 1;
           }
         } else if (World[ShapePositionY + y + 1][ShapePositionX + x] != 0) {
           // don't check collision with itself since it's the last row
-          // next_shape();
           return 1;
         }
       }
@@ -100,10 +101,6 @@ function check_collision_bottom(shape) {
   return 0;
 }
 
-// Originally checked left, right and bottom in one function
-// which caused issues in bottom corners where
-// it detected collision with sides and returned before checking
-// collision at the bottom
 function check_collision_left(shape) {
   for (let y = 0; y < shape.length; y++) {
     for (let x = 0; x < shape[0].length; x++) {
@@ -112,19 +109,16 @@ function check_collision_left(shape) {
         if (ShapePositionX + x <= 0) {
           return 2;
         }
-
         // case collision block
         if (x != 0) {
           if (
             shape[y][x - 1] == 0 && // we check if it's 0 below in the shape, so it doesn't collide with itself
             World[ShapePositionY + y][ShapePositionX + x - 1] != 0 // then we check that the rect below the shape in the world is taken
           ) {
-            // next_shape();
             return 2;
           }
         } else if (World[ShapePositionY + y][ShapePositionX + x - 1] != 0) {
           // don't check collision with itself since it's the last row
-          // next_shape();
           return 2;
         }
       }
@@ -141,19 +135,16 @@ function check_collision_right(shape) {
         if (ShapePositionX + x >= 9) {
           return 3;
         }
-
         //case collision
         if (x != 3) {
           if (
             shape[y][x + 1] == 0 && // we check if it's 0 below in the shape, so it doesn't collide with itself
             World[ShapePositionY + y][ShapePositionX + x + 1] != 0 // then we check that the rect below the shape in the world is taken
           ) {
-            // next_shape();
             return 3;
           }
         } else if (World[ShapePositionY + y][ShapePositionX + x + 1] != 0) {
           // don't check collision with itself since it's the last row
-          // next_shape();
           return 3;
         }
       }
@@ -162,6 +153,7 @@ function check_collision_right(shape) {
   return 0;
 }
 
+// moves the shape down one row.
 function move_down() {
   if (check_collision_bottom(activeShape[rotation]) != 1) {
     remove_shape_from_world(activeShape[rotation]);
@@ -174,6 +166,7 @@ function move_down() {
   }
 }
 
+// Checks if the row is full. If the row is full it will be removed from the world, and we add a new row at the top.
 function check_row_full() {
   for (let y = 0; y < World.length; y++) {
     if (
@@ -198,7 +191,8 @@ function update_high_score(score) {
   app.stage.addChild(HighScore);
 }
 
-function onClick() {
+// (Re)starts the game
+function start_game() {
   console.log('clicked button');
   gameOver = 0;
   PIXI.sound.play('sound');
@@ -246,7 +240,7 @@ function show_start_screen() {
   const styledText = new PIXI.Text(text, style);
   styledText.buttonMode = true;
   styledText.interactive = true;
-  styledText.on('click', onClick);
+  styledText.on('click', start_game);
   startScreen.addChild(styledText);
   styledText.x = 0;
   styledText.y = 200;
@@ -262,15 +256,15 @@ function show_game_over_screen() {
   gameOverBackground.drawRect(-1, 0, 320, 610);
   gameOverScreen.addChild(gameOverBackground);
 
-  let example = new PIXI.Graphics();
-  example.beginFill(0xb5838d);
-  example.drawRect(0, 0, 170, 60);
-  example.buttonMode = true;
-  example.interactive = true;
-  example.on('click', onClick);
-  example.x = 30;
-  example.y = 240;
-  gameOverScreen.addChild(example);
+  let button = new PIXI.Graphics();
+  button.beginFill(0xb5838d);
+  button.drawRect(0, 0, 170, 60);
+  button.buttonMode = true;
+  button.interactive = true;
+  button.on('click', start_game);
+  button.x = 30;
+  button.y = 240;
+  gameOverScreen.addChild(button);
 
   const style = new PIXI.TextStyle({
     fontFamily: 'Futura',
@@ -284,11 +278,11 @@ function show_game_over_screen() {
     fontSize: 25,
   });
 
-  const playagainText = `Start again!`;
-  const styledPlayagainText = new PIXI.Text(playagainText, whiteStyle);
-  gameOverScreen.addChild(styledPlayagainText);
-  styledPlayagainText.x = 48;
-  styledPlayagainText.y = 250;
+  const playAgainText = `Start again!`;
+  const styledPlayAgainText = new PIXI.Text(playAgainText, whiteStyle);
+  gameOverScreen.addChild(styledPlayAgainText);
+  styledPlayAgainText.x = 48;
+  styledPlayAgainText.y = 250;
 
   const text = 'GAME OVER';
   const styledText = new PIXI.Text(text, style);
