@@ -6,14 +6,14 @@ function draw_box_at(x, y) {
     .drawRect(x * 30, y * 30, 30, 30)
     .endFill();
 
-  const rectangleLine = new Graphics();
-  rectangleLine
+  const whiteRectangle = new Graphics();
+  whiteRectangle
     .beginFill(0xffffff)
     .drawRect(x * 30, y * 30, 30, 30)
     .endFill();
 
   if (y < 3) {
-    app.stage.addChild(rectangleLine);
+    app.stage.addChild(whiteRectangle);
   } else {
     app.stage.addChild(rectangle);
   }

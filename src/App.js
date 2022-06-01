@@ -38,6 +38,7 @@ function loop(dt) {
   // ** this part moves the shape downwards
   // everytime fpsCounter is dividable by 5 ** //
   // fpsCounter++;
+  // console.log(fpsCounter);
   if (gameOver == 0) {
     // if (fpsCounter % 5 == 0) {
     move_down();
