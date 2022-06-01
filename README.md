@@ -2,7 +2,9 @@
 
 # Playdate/Tetris
 
-This is a schoolproject. We've made tetris (yay!) in PixiJS.
+This is a school project. We've made tetris (Dedris) in PixiJS.
+
+<a href="https://dedris.netlify.app/">Play the game here!</a>
 
 # Installation
 
@@ -19,6 +21,10 @@ This is a schoolproject. We've made tetris (yay!) in PixiJS.
 4.  -   <a href="https://github.com/s0wie/playdate/pull/4">collision #4</a> - Added collision to shape so they stack.
 5.  -   <a href="https://github.com/s0wie/playdate/pull/5">Gameover #5</a> - Added Gameover screen and functionality to restart the game.
 6.  -   <a href="https://github.com/s0wie/playdate/pull/6">Game start #6 </a> - Added a start screen and some styling.
+7.  -   <a href="https://github.com/s0wie/playdate/pull/7">Deploy #7 </a> - Deploying the site to netlify.
+8.  -   <a href="https://github.com/s0wie/playdate/pull/8">Bugs #8 </a> - fixing bugs with side collision and improving performance.
+9.  -   <a href="https://github.com/s0wie/playdate/pull/9">Added code review #9</a> - Added code review.
+10. -   <a href="https://github.com/s0wie/playdate/pull/9">Final touches #10</a> - Adding comments and removed unnecessary code.
 
 # Code Review
 
@@ -38,4 +44,4 @@ Tested by the following muggles (non-coders):
 1. Frans Bergentall
 2. Adam Oliv
 3. Stefan Lam
-4. Ulf Eriksson
+4. Henrik Madan
