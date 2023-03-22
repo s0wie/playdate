@@ -44,7 +44,7 @@ function next_shape() {
 }
 
 function end_game() {
-  PIXI.sound.stop('sound');
+  // PIXI.sound.stop('sound');
   app.ticker.stop();
 }
 
@@ -195,7 +195,7 @@ function update_high_score(score) {
 function start_game() {
   console.log('clicked button');
   gameOver = 0;
-  PIXI.sound.play('sound');
+  // PIXI.sound.play('sound');
   app.ticker.start();
   score = 0;
   World.splice(0, 20);
