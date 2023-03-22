@@ -10,7 +10,7 @@ const app = new Application({
 });
 
 // Adding the sound
-PIXI.sound.add('sound', '/src/assets/tetris.mp3');
+// PIXI.sound.add('sound', '/src/assets/tetris.mp3');
 
 app.renderer.backgroundColor = 0x233950;
 app.renderer.resize(window.innerWidth, window.innerHeight);
